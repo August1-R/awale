@@ -12,11 +12,12 @@ def jouercoup(coup, plateau):
     plateau[coup[0]][coup[1]] = 0
     ligne = coup[0]
     colone = coup[1]
-    if colone + 1 <= 5:
-        colone += 1
-        if ligne + 1 <= 1:
-            colone = 0
-            ligne += 1
+    while pierre != 0:
+        if colone + 1 <= 5:
+            colone += 1
+        elif ligne + 1 <= 1:
+                colone = 0
+                ligne += 1
         else:
             colone = 0
             ligne = 0
@@ -24,14 +25,16 @@ def jouercoup(coup, plateau):
         pierre -= 1
     gain = 0
     while True:
-        if plateau[ligne][colone] <= 2:
-            gain = + plateau[ligne][colone]
+        if plateau[ligne][colone] <= 2 and coup[2] == 1:        # coup 2 == 1 : on vérifie que ce coup nous permet de
+                                                                # recupérer des pièces sans qu'il ne soit illégal
+            gain += plateau[ligne][colone]
             plateau[ligne][colone] = 0
             if colone - 1 >= 0:
                 colone -= 1
-            else:
+            else :
                 return[plateau, gain]
+        else:
+            return[plateau, gain]
 
 
-print(jouercoup([1,2],[[4,4,4,4,4,4]
-                        ,[4,4,4,4,4,4]]))
+print(jouercoup([1,5,0],[[0,0,0,0,4,4],[4,4,4,0,4,10]]))
