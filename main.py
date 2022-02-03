@@ -43,7 +43,22 @@ def defautCoups(joueur):
     else:
         return [[1,0],[1,1],[1,2],[1,3],[1,4],[1,5]]
 
+def plateauAdverseNonVide(coup, plateau):
+    afterPlay = jouercoup(coup, plateau)
+    joueur = coup[1]
+    estVide = True
+    for i in afterPlay[joueur]:
+        if i != 0:
+            return True
+    return False
+
 def coupsPossibles(Plateau, joueur):
+    coupsPossibles = []
+    defaut = defautCoups()
+    for coup in defaut:
+        if Plateau[coup[0],coup[1]]:
+            coupsPossibles.append(coup)
+
 
 
 print(jouercoup([1,5,0],[[0,0,0,0,4,4],[4,4,4,0,4,10]]))
