@@ -37,5 +37,13 @@ def jouercoup(coup, plateau):
         else:
             return[plateau, gain]
 
+def defautCoups(joueur):
+    if joueur == 0:
+        return [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5]]
+    else:
+        return [[1,0],[1,1],[1,2],[1,3],[1,4],[1,5]]
+
+def coupsPossibles(Plateau, joueur):
+
 
 print(jouercoup([1,5,0],[[0,0,0,0,4,4],[4,4,4,0,4,10]]))
