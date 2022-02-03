@@ -27,8 +27,7 @@ def jouercoup(coup, plateau):
         pierre -= 1
     gain = 0
     while True:
-        if plateau[ligne][colone] <= 2 and coup[2] == 1:        # coup 2 == 1 : on vérifie que ce coup nous permet de
-                                                                # recupérer des pièces sans qu'il ne soit illégal
+        if plateau[ligne][colone] <= 2 and ligne != coup[0]:
             gain += plateau[ligne][colone]
             plateau[ligne][colone] = 0
             if colone - 1 >= 0:
