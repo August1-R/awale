@@ -7,6 +7,8 @@ Le joueur True est le joueur qui a plateau[1] devant lui
 def initialisationPlateau():
     return [[4,4,4,4,4,4],[4,4,4,4,4,4]]
 
+
+
 def jouercoup(coup, plateau):
     pierre = plateau[coup[0]][coup[1]]
     plateau[coup[0]][coup[1]] = 0
