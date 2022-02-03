@@ -46,7 +46,6 @@ def defautCoups(joueur):
 def plateauAdverseNonVide(coup, plateau):
     afterPlay = jouercoup(coup, plateau)
     joueur = coup[1]
-    estVide = True
     for i in afterPlay[joueur]:
         if i != 0:
             return True
@@ -54,11 +53,11 @@ def plateauAdverseNonVide(coup, plateau):
 
 def coupsPossibles(Plateau, joueur):
     coupsPossibles = []
-    defaut = defautCoups()
+    defaut = defautCoups(joueur)
     for coup in defaut:
-        if Plateau[coup[0],coup[1]]:
+        if Plateau[coup[0], coup[1]] != 0 and plateauAdverseNonVide():
             coupsPossibles.append(coup)
 
 
 
-print(jouercoup([1,5,0],[[0,0,0,0,4,4],[4,4,4,0,4,10]]))
+print(coupsPossibles(initialisationPlateau(),1))
