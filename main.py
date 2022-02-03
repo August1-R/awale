@@ -37,4 +37,4 @@ def jouercoup(coup, plateau):
             return[plateau, gain]
 
 
-print(jouercoup([1, 5, 1], initialisationPlateau()))
+print(jouercoup([1,5,0],[[0,0,0,0,4,4],[4,4,4,0,4,10]]))
