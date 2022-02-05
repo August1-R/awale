@@ -77,8 +77,13 @@ def plateauAdverseNonVide(coup, plateau):
     """
     afterPlay = jouercoup(coup, copiePlateau(plateau))
     afterPlay.pop()
-    joueur = coup[0]
-    for i in afterPlay[joueur - 1]:
+
+    if coup[0] == 1:
+        joueurAdverse = 0
+    else:
+        joueurAdverse = 1
+
+    for i in afterPlay[joueurAdverse]:
         if i != 0:
             return True
     return False
