@@ -3,6 +3,14 @@ format d'un plateau : [[[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]      (le plateau
 format d'un coup :  [coordonnée X, coordonnée Y, 1 == gain possible/0 == gain impossible, nom du coup]
 
 """
+def affichage(plateau):
+    ligne1 = plateau[0][::-1]
+    ligne2 = plateau[1]
+
+    print('|', ligne1[0], '|', ligne1[1], '|', ligne1[2], '|', ligne1[3], '|', ligne1[4], '|', ligne1[5], '|')
+    print('|', ligne2[0], '|', ligne2[1], '|', ligne2[2], '|', ligne2[3], '|', ligne2[4], '|', ligne2[5], '|')
+
+
 def copiePlateau(plateau):
     """
     renvoie une copie du plateau
@@ -14,7 +22,7 @@ def initialisationPlateau():
     """
     retourne le plateau de début de partie
     """
-    return [[4, 4, 4, 4, 4, 4], [4, 4, 12, 4, 4, 12]]
+    return [[4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4]]
 
 
 def jouercoup(coup, plateau):
@@ -130,7 +138,7 @@ def game():
 
     # boucle qui dure tout le long de la partie
     while True:
-        print(plateau)
+        affichage(plateau)
         # affichage du plateau
 
         #try:    # on vérifie que le joueur donne bien un entier comme coup
