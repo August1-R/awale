@@ -14,7 +14,7 @@ def initialisationPlateau():
     """
     retourne le plateau de début de partie
     """
-    return [[1, 1, 0, 0, 0, 0], [4, 4, 4, 4, 4, 4]]
+    return [[0, 1, 0, 0, 0, 0], [0, 0, 0, 0, 3, 0]]
 
 
 def jouercoup(coup, plateau):
@@ -107,5 +107,54 @@ def coupsPossibles(plateau, joueur):
 
     return coupsPossibles
 
+def game():
+    joueur = 1
+    pierresJoueur0 = 0
+    pierresJoueur1 = 0
+    plateau = initialisationPlateau()
+    while True:
+        print(plateau)
+        # affichage du plateau
+        try:
+            coupsPossible = coupsPossibles(copiePlateau(plateau), joueur)
+            if len(coupsPossible) > 0:
+                nomCoup = int(input("choisissez votre coup :"))
+                coupJoué = False  # variable qui vérrifie si le joueur a bien donné un coup valable
 
-print(coupsPossibles(initialisationPlateau(), 1))
+                for coup in coupsPossible:
+                    if nomCoup == coup[3]:
+                        coupJoué = True
+                        plateau = jouercoup(coup, copiePlateau(plateau))
+                        if joueur == 1:
+                            pierresJoueur1 += plateau[2]
+                            print("votre score est de : ", pierresJoueur1)
+                        else:
+                            pierresJoueur0 += plateau[2]
+                            print("votre score est de : ", pierresJoueur0)
+                        plateau.pop()
+
+                        if joueur == 1:
+                            joueur = 0
+                        else:
+                            joueur = 1
+
+                if not coupJoué:
+                    print("vous n'avez pas donné un coup valide, veuillez réessayer")
+
+            else:
+                if pierresJoueur0 > pierresJoueur1:
+                    print("fin de partie, le joueur 0 à gagné")
+                elif pierresJoueur0 < pierresJoueur1:
+                    print("fin de partie, le joueur 1 à gagné")
+                else:
+                    print("fin de partie, il y a égalité")
+                break
+
+        except:
+            print("vous n'avez pas entré un coup valable")
+
+
+
+
+game()
+

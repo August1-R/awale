@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95053b33-130e-453a-9f59-ab2c6d079d79" name="Changes" comment="création de la fonction defautcoup">
+    <list default="true" id="95053b33-130e-453a-9f59-ab2c6d079d79" name="Changes" comment="la fonction coupsPossibes est fonctionnelle">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643914682420</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="la fonction coupsPossibes est fonctionnelle">
+      <created>1644071989421</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1644071989421</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,7 +214,8 @@
     <MESSAGE value="il n'y a plus besoin que de deux paramètres dans coup" />
     <MESSAGE value="création de la fonction defautcoup" />
     <MESSAGE value="rappatriment de la la fonction plateauAdverseNonVide" />
-    <option name="LAST_COMMIT_MESSAGE" value="rappatriment de la la fonction plateauAdverseNonVide" />
+    <MESSAGE value="la fonction coupsPossibes est fonctionnelle" />
+    <option name="LAST_COMMIT_MESSAGE" value="la fonction coupsPossibes est fonctionnelle" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
