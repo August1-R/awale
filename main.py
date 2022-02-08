@@ -107,20 +107,30 @@ def coupsPossibles(plateau, joueur):
 
     return coupsPossibles
 
+
+
 def game():
-    joueur = 1
-    pierresJoueur0 = 0
-    pierresJoueur1 = 0
+    """
+    fonction principal qui fait jouer les joueurs
+    """
+    joueur = 1      # par défaut le joueur 1 commance
+    pierresJoueur0 = 0      # pierres gagnées par le joueur 0
+    pierresJoueur1 = 0      # pierres gagnées par le joueur 0
     plateau = initialisationPlateau()
+
+    # boucle qui dure tout le long de la partie
     while True:
         print(plateau)
         # affichage du plateau
-        try:
-            coupsPossible = coupsPossibles(copiePlateau(plateau), joueur)
-            if len(coupsPossible) > 0:
-                nomCoup = int(input("choisissez votre coup :"))
+
+        try:    # on vérifie que le joueur donne bien un entier comme coup
+            coupsPossible = coupsPossibles(copiePlateau(plateau), joueur)   #on récupère la liste de tous les coups possibles
+
+            if len(coupsPossible) > 0:  # on vérifie que ce n'est pas la fin de partie
+                nomCoup = int(input("choisissez votre coup :"))     #le joueur choisi son coup
                 coupJoué = False  # variable qui vérrifie si le joueur a bien donné un coup valable
 
+                # on cherche quel est le coup que le joueur a choisi et on le joue
                 for coup in coupsPossible:
                     if nomCoup == coup[3]:
                         coupJoué = True
@@ -133,14 +143,17 @@ def game():
                             print("votre score est de : ", pierresJoueur0)
                         plateau.pop()
 
+                        # on change de joueur
                         if joueur == 1:
                             joueur = 0
                         else:
                             joueur = 1
 
+                # si la valeur donné ne correspond a aucun coup on demande au joueur de reessayer
                 if not coupJoué:
                     print("vous n'avez pas donné un coup valide, veuillez réessayer")
 
+            # quand la partie est finit on indique le gagnant
             else:
                 if pierresJoueur0 > pierresJoueur1:
                     print("fin de partie, le joueur 0 à gagné")
@@ -150,6 +163,7 @@ def game():
                     print("fin de partie, il y a égalité")
                 break
 
+        #si le joueur n'a pas donné un entier
         except:
             print("vous n'avez pas entré un coup valable")
 
