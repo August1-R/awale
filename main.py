@@ -14,7 +14,7 @@ def initialisationPlateau():
     """
     retourne le plateau de début de partie
     """
-    return [[0, 1, 0, 0, 0, 0], [0, 0, 0, 0, 3, 0]]
+    return [[4, 4, 4, 4, 4, 4], [4, 4, 4, 4, 4, 4]]
 
 
 def jouercoup(coup, plateau):
