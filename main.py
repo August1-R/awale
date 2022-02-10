@@ -107,7 +107,7 @@ def plateauAdverseNonVide(coup, plateau):
     return False
 
 
-def coupsPossibles(plateau, joueur):
+def coupsPossibles(plateau , joueur):
     """
     :param Plateau: etat du plateau avant de jouer le coup
     :param joueur: joueur a qui c'est le tour de jouer
@@ -125,26 +125,56 @@ def coupsPossibles(plateau, joueur):
 
     return coupsPossibles
 
-def iamin(plateau, gainJoueur1, gainJoueur0, profondeur):
+
+
+
+def iaMin(plateau, gainJoueur1, gainJoueur0, profondeur):
+    coupsPossibles = coupsPossibles(copiePlateau(plateau), 1)
     if profondeur == 0:
         return gainJoueur0 - gainJoueur1
-    if partieFinie(plateau, False):
-        gagnant = partiefinie(plateau, True):
-        if gagnant == 1:
-            return  -1000
-        else :
-            return  1000
+    if coupsPossibles == 0:
+        if gainJoueur1 > gainJoueur0:
+            return -1000
+        elif gainJoueur1 < gainJoueur0:
+            return 1000
+        else:
+            return 0
+
+
     min = None
-    coupsPossibles = coupsPossibles(plateau, 1)
     for coup in coupsPossibles:
         plateautmp = jouercoup(coup, copiePlateau(plateau))
-        gainJoueur0 += plateautmp[2]
-        plateautmp.pop
-        tmp = max(plateautmp, gain1, gain0, profondeur - 1)
+        gainJoueur0tmp = plateautmp[2] + gainJoueur0
+        plateautmp.pop()
+        tmp = iaMax(plateautmp, gainJoueur1, gainJoueur0tmp, profondeur - 1)
         if tmp < min:
             min = tmp
 
     return min
+
+def iaMax(plateau, gainJoueur1, gainJoueur0, profondeur):
+    coupsPossibles = coupsPossibles(copiePlateau(plateau), 1)
+    if profondeur == 0:
+        return gainJoueur0 - gainJoueur1
+    if coupsPossibles == 0:
+        if gainJoueur1 > gainJoueur0:
+            return -1000
+        elif gainJoueur1 < gainJoueur0:
+            return 1000
+        else:
+            return 0
+
+
+    max = None
+    for coup in coupsPossibles:
+        plateautmp = jouercoup(coup, copiePlateau(plateau))
+        gainJoueur1tmp = plateautmp[2] +gainJoueur1
+        plateautmp.pop()
+        tmp = iaMin(plateautmp, gainJoueur1tmp, gainJoueur0, profondeur - 1)
+        if tmp > max:
+            max = tmp
+
+    return max
 
 
 
@@ -166,6 +196,7 @@ def game():
         coupsPossible = coupsPossibles(copiePlateau(plateau), joueur)   #on récupère la liste de tous les coups possibles
 
         if len(coupsPossible) > 0:  # on vérifie que ce n'est pas la fin de partie
+
             nomCoup = int(input("choisissez votre coup :"))     #le joueur choisi son coup
             coupJoué = False  # variable qui vérrifie si le joueur a bien donné un coup valable
 
