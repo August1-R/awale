@@ -125,6 +125,27 @@ def coupsPossibles(plateau, joueur):
 
     return coupsPossibles
 
+def iamin(plateau, gainJoueur1, gainJoueur0, profondeur):
+    if profondeur == 0:
+        return gainJoueur0 - gainJoueur1
+    if partieFinie(plateau, False):
+        gagnant = partiefinie(plateau, True):
+        if gagnant == 1:
+            return  -1000
+        else :
+            return  1000
+    min = None
+    coupsPossibles = coupsPossibles(plateau, 1)
+    for coup in coupsPossibles:
+        plateautmp = jouercoup(coup, copiePlateau(plateau))
+        gainJoueur0 += plateautmp[2]
+        plateautmp.pop
+        tmp = max(plateautmp, gain1, gain0, profondeur - 1)
+        if tmp < min:
+            min = tmp
+
+    return min
+
 
 
 def game():
