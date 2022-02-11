@@ -107,7 +107,7 @@ def plateauAdverseNonVide(coup, plateau):
     return False
 
 
-def coupsPossibles(plateau , joueur):
+def coups_Possibles(plateau , joueur):
     """
     :param Plateau: etat du plateau avant de jouer le coup
     :param joueur: joueur a qui c'est le tour de jouer
@@ -129,7 +129,7 @@ def coupsPossibles(plateau , joueur):
 
 
 def iaMin(plateau, gainJoueur1, gainJoueur0, profondeur):
-    coupsPossibles = coupsPossibles(copiePlateau(plateau), 1)
+    coupsPossibles = coups_Possibles(copiePlateau(plateau), 1)
     if profondeur == 0:
         return gainJoueur0 - gainJoueur1
     if coupsPossibles == 0:
@@ -147,13 +147,15 @@ def iaMin(plateau, gainJoueur1, gainJoueur0, profondeur):
         gainJoueur0tmp = plateautmp[2] + gainJoueur0
         plateautmp.pop()
         tmp = iaMax(plateautmp, gainJoueur1, gainJoueur0tmp, profondeur - 1)
-        if tmp < min:
+        if min == None:
+            min = tmp
+        elif tmp < min:
             min = tmp
 
     return min
 
 def iaMax(plateau, gainJoueur1, gainJoueur0, profondeur):
-    coupsPossibles = coupsPossibles(copiePlateau(plateau), 1)
+    coupsPossibles = coups_Possibles(copiePlateau(plateau), 1)
     if profondeur == 0:
         return gainJoueur0 - gainJoueur1
     if coupsPossibles == 0:
@@ -171,18 +173,37 @@ def iaMax(plateau, gainJoueur1, gainJoueur0, profondeur):
         gainJoueur1tmp = plateautmp[2] +gainJoueur1
         plateautmp.pop()
         tmp = iaMin(plateautmp, gainJoueur1tmp, gainJoueur0, profondeur - 1)
-        if tmp > max:
+        if max == None:
+            max = tmp
+        elif tmp > max:
             max = tmp
 
     return max
 
+def IA(plateau, profondeur):
+    max = None
+    coupJouer = None
+    coupsPossibles = coups_Possibles(copiePlateau(plateau), 1)
+    for coup in coupsPossibles:
+        plateautmp = jouercoup(coup, copiePlateau(plateau))
+        gainJoueur1 = plateautmp[2]
+        plateautmp.pop()
+        tmp = iaMin(plateautmp, gainJoueur1, 0, profondeur - 1)
 
+        if max == None:
+            max = tmp
+            coupJouer = coup[3]
+        if tmp > max:
+            max = tmp
+            coupJouer = coup[3]
+    print("L'IA joue : ", coupJouer)
+    return coupJouer
 
 def game():
     """
     fonction principal qui fait jouer les joueurs
     """
-    joueur = 1      # par défaut le joueur 1 commance
+    joueur = 0      # par défaut le joueur 1 commance
     pierresJoueur0 = 0      # pierres gagnées par le joueur 0
     pierresJoueur1 = 0      # pierres gagnées par le joueur 0
     plateau = initialisationPlateau()
@@ -192,50 +213,52 @@ def game():
         affichage(plateau)
         # affichage du plateau
 
-        #try:    # on vérifie que le joueur donne bien un entier comme coup
-        coupsPossible = coupsPossibles(copiePlateau(plateau), joueur)   #on récupère la liste de tous les coups possibles
+        try:    # on vérifie que le joueur donne bien un entier comme coup
+            coupsPossible = coups_Possibles(copiePlateau(plateau), joueur)   #on récupère la liste de tous les coups possibles
 
-        if len(coupsPossible) > 0:  # on vérifie que ce n'est pas la fin de partie
+            if len(coupsPossible) > 0:  # on vérifie que ce n'est pas la fin de partie
+                if joueur == 0:
+                    nomCoup = int(input("choisissez votre coup :"))     #le joueur choisi son coup
+                else:
+                    nomCoup = IA(copiePlateau(plateau), 6)
+                coupJoué = False  # variable qui vérrifie si le joueur a bien donné un coup valable
 
-            nomCoup = int(input("choisissez votre coup :"))     #le joueur choisi son coup
-            coupJoué = False  # variable qui vérrifie si le joueur a bien donné un coup valable
+                # on cherche quel est le coup que le joueur a choisi et on le joue
+                for coup in coupsPossible:
+                    if nomCoup == coup[3]:
+                        coupJoué = True
+                        plateau = jouercoup(coup, copiePlateau(plateau))
+                        if joueur == 1:
+                            pierresJoueur1 += plateau[2]
+                            print("Score de l'IA : ", pierresJoueur1)
+                        else:
+                            pierresJoueur0 += plateau[2]
+                            print("votre score est de : ", pierresJoueur0)
+                        plateau.pop()
 
-            # on cherche quel est le coup que le joueur a choisi et on le joue
-            for coup in coupsPossible:
-                if nomCoup == coup[3]:
-                    coupJoué = True
-                    plateau = jouercoup(coup, copiePlateau(plateau))
-                    if joueur == 1:
-                        pierresJoueur1 += plateau[2]
-                        print("votre score est de : ", pierresJoueur1)
-                    else:
-                        pierresJoueur0 += plateau[2]
-                        print("votre score est de : ", pierresJoueur0)
-                    plateau.pop()
+                        # on change de joueur
+                        if joueur == 1:
+                            joueur = 0
+                        else:
+                            joueur = 1
 
-                    # on change de joueur
-                    if joueur == 1:
-                        joueur = 0
-                    else:
-                        joueur = 1
+                # si la valeur donné ne correspond a aucun coup on demande au joueur de reessayer
+                if not coupJoué:
+                    print("vous n'avez pas donné un coup valide, veuillez réessayer")
 
-            # si la valeur donné ne correspond a aucun coup on demande au joueur de reessayer
-            if not coupJoué:
-                print("vous n'avez pas donné un coup valide, veuillez réessayer")
-
-        # quand la partie est finit on indique le gagnant
-        else:
-            if pierresJoueur0 > pierresJoueur1:
-                print("fin de partie, le joueur 0 à gagné")
-            elif pierresJoueur0 < pierresJoueur1:
-                print("fin de partie, le joueur 1 à gagné")
+            # quand la partie est finit on indique le gagnant
             else:
-                print("fin de partie, il y a égalité")
-            break
+                if pierresJoueur0 > pierresJoueur1:
+                    print("fin de partie, le joueur 0 à gagné")
+                elif pierresJoueur0 < pierresJoueur1:
+                    print("fin de partie, le joueur 1 à gagné")
+                else:
+                    print("fin de partie, il y a égalité")
+                break
 
         #si le joueur n'a pas donné un entier
-        #except:
-            #print("vous n'avez pas entré un coup valable")
+        except:
+            print("vous n'avez pas entré un coup valable")
 
 
 
