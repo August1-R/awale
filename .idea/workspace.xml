@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95053b33-130e-453a-9f59-ab2c6d079d79" name="Changes" comment="création des fonctions min et max">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2022_18_44_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2022_18_44__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2022_19_16_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2022_19_16_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2022_19_16__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_03_02_2022_19_16__Changes_1.xml" beforeDir="false" />
+    <list default="true" id="95053b33-130e-453a-9f59-ab2c6d079d79" name="Changes" comment="L'IA fonctionne mais il y a une erreur lors qu'il y a plus de 12 pierres dans la case">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -215,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644507990362</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="L'IA fonctionne mais il y a une erreur lors qu'il y a plus de 12 pierres dans la case">
+      <created>1644597682133</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1644597682134</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +277,8 @@
     <MESSAGE value="ajout de la fonction affichage" />
     <MESSAGE value="fonction iaMin non fonctionnelle" />
     <MESSAGE value="création des fonctions min et max" />
-    <option name="LAST_COMMIT_MESSAGE" value="création des fonctions min et max" />
+    <MESSAGE value="L'IA fonctionne mais il y a une erreur lors qu'il y a plus de 12 pierres dans la case" />
+    <option name="LAST_COMMIT_MESSAGE" value="L'IA fonctionne mais il y a une erreur lors qu'il y a plus de 12 pierres dans la case" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
