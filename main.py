@@ -86,7 +86,7 @@ def jouercoup(coup, plateau):
     gain = 0
     if coup[2] == 1:
         while True:
-            if (plateau[ligne][colone] == 2 or plateau[ligne][colone]) == 3 and ligne != coup[0]:
+            if (plateau[ligne][colone] == 2 or plateau[ligne][colone] == 3) and ligne != coup[0]:
                 gain += plateau[ligne][colone]
                 plateau[ligne][colone] = 0
                 if colone - 1 >= 0:
