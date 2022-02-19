@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95053b33-130e-453a-9f59-ab2c6d079d79" name="Changes" comment="le jeu semble fonctionner">
+    <list default="true" id="95053b33-130e-453a-9f59-ab2c6d079d79" name="Changes" comment="le jeu fonctionne avec IA, mais il ne gère pas les égalitées par répétition">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644765273192</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="le jeu fonctionne avec IA, mais il ne gère pas les égalitées par répétition">
+      <created>1644865496278</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1644865496278</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -285,7 +293,8 @@
     <MESSAGE value="création des fonctions min et max" />
     <MESSAGE value="L'IA fonctionne mais il y a une erreur lors qu'il y a plus de 12 pierres dans la case" />
     <MESSAGE value="le jeu semble fonctionner" />
-    <option name="LAST_COMMIT_MESSAGE" value="le jeu semble fonctionner" />
+    <MESSAGE value="le jeu fonctionne avec IA, mais il ne gère pas les égalitées par répétition" />
+    <option name="LAST_COMMIT_MESSAGE" value="le jeu fonctionne avec IA, mais il ne gère pas les égalitées par répétition" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

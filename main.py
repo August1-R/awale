@@ -153,7 +153,7 @@ def coups_Possibles(plateau, joueur):
 def iaMin(plateau, gainJoueur1, gainJoueur0, profondeur):
     coupsPossibles = coups_Possibles(copiePlateau(plateau), 1)
     if profondeur == 0:
-        return gainJoueur1 - gainJoueur0
+        return float(gainJoueur1 - gainJoueur0)
     if len(coupsPossibles) == 0:
         if gainJoueur1 > gainJoueur0:
             return 1000
@@ -179,7 +179,7 @@ def iaMin(plateau, gainJoueur1, gainJoueur0, profondeur):
 def iaMax(plateau, gainJoueur1, gainJoueur0, profondeur):
     coupsPossibles = coups_Possibles(copiePlateau(plateau), 1)
     if profondeur == 0:
-        return gainJoueur1 - gainJoueur0
+        return float(gainJoueur1 - gainJoueur0)
     if len(coupsPossibles) == 0:
         if gainJoueur1 > gainJoueur0:
             return 1000
@@ -217,6 +217,7 @@ def IA(plateau, profondeur):
         elif tmp > max:
             max = tmp
             coupJouer = coup[3]
+    print(max)
     print("L'IA joue : ", colored(int(coupJouer), 'red'))
     return coupJouer
 
@@ -241,7 +242,7 @@ def game():
             if joueur == 0:
                 nomCoup = int(input("choisissez votre coup :"))     #le joueur choisi son coup
             else:
-                nomCoup = IA(copiePlateau(plateau), 7)
+                nomCoup = IA(copiePlateau(plateau), 6)
             coupJoue = False  # variable qui vérrifie si le joueur a bien donné un coup valable
 
             # on cherche quel est le coup que le joueur a choisi et on le joue
